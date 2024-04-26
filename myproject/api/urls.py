@@ -1,12 +1,12 @@
 from django.urls import path, include
-from . import views
+from rest_framework.routers import DefaultRouter
+from .views import UserViewSet, home, logout_view
 
-
-
-from django.urls import path
-from . import views
+router = DefaultRouter()
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('logout', views.logout_view, name='logout')
+    path('', home, name='home'),
+    path('logout/', logout_view, name='logout'),
+    path('api/', include(router.urls)), 
 ]
