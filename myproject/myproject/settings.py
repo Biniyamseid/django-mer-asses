@@ -61,7 +61,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-SITE_ID = 1
+SITE_ID = 2
 
 ROOT_URLCONF = 'myproject.urls'
 
@@ -136,6 +136,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'api.User'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -144,3 +147,29 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your-email@example.com'
 EMAIL_HOST_PASSWORD = 'your-email-password'
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'client_id': 'your-google-client-id',
+#         'secret': 'your-google-client-secret',
+#     },
+#     'facebook': {
+#         'app': {
+#             'client_id': 'your-facebook-client-id',
+#             'secret': 'your-facebook-client-secret',
+#         }
+#     },
+    
+# }
+
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        "AUTH_PARAMS": {"access_type": "online"},
+    },
+   
+
+    
+}

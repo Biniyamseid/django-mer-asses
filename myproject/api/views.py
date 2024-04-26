@@ -1,10 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.contrib.auth import logout
 
-# Create your views here.
-from rest_framework import viewsets
-from .models import User
-from .serializers import UserSerializer
+def home (request):
+    return render(request, 'home.html')
+def logout_view(request):
+    logout(request)
+    return redirect("/")
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
